@@ -31,18 +31,22 @@
                   extraArgs = [ "-f" ];
                   subvolumes = {
                     "root" = {
+                      name = "root";
                       mountpoint = "/";
                       mountOptions = [ "compress=zstd" "noatime" ];
                     };
                     "home" = {
+                      name = "home";
                       mountpoint = "/home";
                       mountOptions = [ "compress=zstd" "noatime" ];
                     };
                     "nix" = {
+                      name = "nix";
                       mountpoint = "/nix";
                       mountOptions = [ "compress=zstd" "noatime" ];
                     };
                     "swap" = {
+                      name = "swap";
                       mountpoint = "/swap";
                       swap.swapfile.size = "8G";
                     };
