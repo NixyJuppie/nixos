@@ -9,6 +9,7 @@ sudo nix --experimental-features "nix-command flakes" run github:nix-community/d
 ```
 ### Installation
 ```bash
+sudo nix-channel --add https://channels.nixos.org/nixos-unstable nixos
 sudo git clone https://github.com/NixyJuppie/nixos /mnt/etc/nixos
 sudo nixos-install
 reboot

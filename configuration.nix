@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
@@ -6,6 +6,12 @@
     "${builtins.fetchTarball "https://github.com/nix-community/disko/archive/master.tar.gz"}/module.nix"
     ./disko.nix
   ];
+
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      # TODO
+    ];
+
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -26,7 +32,7 @@
   # Desktop
   services.xserver.enable = true;
   services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.desktopManager.plasma6.enable = true;
 
   # Audio
   security.rtkit.enable = true;
@@ -44,7 +50,7 @@
       isNormalUser = true;
       extraGroups = [ "wheel" ];
       packages = with pkgs; [
-        sl
+        # TODO
       ];
     };
   };
@@ -52,8 +58,10 @@
   # Packages
   environment.systemPackages = with pkgs; [
     neofetch
+    vscodium
+    librewolf
   ];
-
+  
   # https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion
   system.stateVersion = "23.11";
 }
