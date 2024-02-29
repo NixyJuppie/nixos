@@ -43,7 +43,6 @@
     user = {
       isNormalUser = true;
       extraGroups = [ "wheel" ];
-      initialPassword = "qwe123";
       packages = with pkgs; [
         sl
       ];
