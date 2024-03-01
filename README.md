@@ -2,8 +2,7 @@
 
 ## Installation
 > [!WARNING]  
-> These commands must be executed by a normal user.  
-> If u want to use it from NixOS installer, u need to run `nixos-enter -c "su user"`
+> These commands must be executed by an user named `user`.
 
 ```bash
 # Clone this repo
