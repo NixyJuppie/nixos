@@ -18,7 +18,7 @@
       init.defaultBranch = "develop";
       credential = {
         credentialStore = "secretservice";
-        helper = "git-credential-manager";
+        helper = "${pkgs.git-credential-manager}/bin/git-credential-manager";
       };
     };
   };

@@ -20,8 +20,11 @@
       kmix.mic_mute = [ "Microphone Mute" "Shift+Volume Mute" ];
     };
     configFile = {
-      kwinrulesrc.General.count = 1;
+      kxkbrc.Layout.LayoutList = "pl";
+      kxkbrc.Layout.Use = true;
+
       # Flameshot fix
+      kwinrulesrc.General.count = 1;
       kwinrulesrc.General.rules = "bc3369a1-9005-4113-96ec-3048e5174753";
       kwinrulesrc.bc3369a1-9005-4113-96ec-3048e5174753.Description = "Flameshot";
       kwinrulesrc.bc3369a1-9005-4113-96ec-3048e5174753.above = true;
@@ -32,5 +35,6 @@
       kwinrulesrc.bc3369a1-9005-4113-96ec-3048e5174753.wmclass = "flameshot";
       kwinrulesrc.bc3369a1-9005-4113-96ec-3048e5174753.wmclassmatch = 1;
     };
+    startup.autoStartScript.options.text = "${pkgs.beeper}/bin/beeper --hidden";
   };
 }
