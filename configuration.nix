@@ -41,10 +41,14 @@
     git
   ];
 
+  # Shells
+  programs.fish.enable = true;
+
   # Users
   users.users.user = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+    shell = pkgs.fish;
   };
 
   # https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion
