@@ -9,8 +9,9 @@ sudo nix --experimental-features "nix-command flakes" run github:nix-community/d
 ```
 ### Installation
 ```bash
-sudo nix-channel --add https://channels.nixos.org/nixos-unstable nixos
 sudo git clone https://github.com/NixyJuppie/nixos /mnt/etc/nixos
-sudo nixos-install
+sudo nixos-generate-config --no-filesystems --show-hardware-config | sudo tee /mnt/etc/nixos/hardware-configuration.nix
+sudo nixos-install --flake /mnt/etc/nixos#nixos
+sudo nixos-enter -c "passwd user"
 reboot
 ```
