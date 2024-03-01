@@ -1,15 +1,27 @@
 { pkgs, ... }:
-
 {
-  home.username = "user";
-  home.homeDirectory = "/home/user";
   home.packages = with pkgs; [
     nil
     nixpkgs-fmt
 
-    # unfree
-    # beeper
+    gnupg
+    git-credential-manager
   ];
+
+  programs.git = {
+    enable = true;
+    userName = "NixyJuppie";
+    userEmail = "git.nixy.carefully356@passfwd.com";
+    signing.signByDefault = true;
+    signing.key = "C3EE4037AE612391";
+    extraConfig = {
+      init.defaultBranch = "develop";
+      credential = {
+        credentialStore = "secretservice";
+        helper = "git-credential-manager";
+      };
+    };
+  };
 
   programs.vscode = {
     enable = true;
@@ -34,7 +46,4 @@
       };
     };
   };
-
-  programs.home-manager.enable = true;
-  home.stateVersion = "23.11";
 }
