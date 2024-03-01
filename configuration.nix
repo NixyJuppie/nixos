@@ -39,7 +39,6 @@
   # Packagess
   environment.systemPackages = with pkgs; [
     git
-    librewolf
   ];
 
   # Users
