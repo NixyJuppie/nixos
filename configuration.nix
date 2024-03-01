@@ -1,23 +1,21 @@
 { pkgs, lib, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-    "${builtins.fetchTarball "https://github.com/nix-community/disko/archive/master.tar.gz"}/module.nix"
-    ./disko.nix
-  ];
+  imports = [ ./hardware-configuration.nix ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
-      # TODO
+      "beeper"
     ];
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Networking
-  networking.hostName = "NixOS";
+  networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
   # Locale
@@ -27,7 +25,6 @@
     font = "Lat2-Terminus16";
     keyMap = "pl";
   };
-  services.xserver.xkb.layout = "pl"; # X11
 
   # Desktop
   services.xserver.enable = true;
@@ -45,24 +42,22 @@
   };
 
   # Users
-  users.users = {
-    user = {
-      isNormalUser = true;
-      extraGroups = [ "wheel" ];
-      packages = with pkgs; [
-        # TODO
-      ];
-    };
+  users.users.user = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
   };
 
-  # Packages
+  # Packagess
   environment.systemPackages = with pkgs; [
+    git
+    nil
+    nixpkgs-fmt
+
     neofetch
     vscodium
     librewolf
   ];
-  
+
   # https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion
   system.stateVersion = "23.11";
 }
-
