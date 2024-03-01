@@ -1,12 +1,7 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   imports = [ ./hardware-configuration.nix ];
-
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "beeper"
-    ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -41,22 +36,17 @@
     jack.enable = true;
   };
 
+  # Packagess
+  environment.systemPackages = with pkgs; [
+    git
+    librewolf
+  ];
+
   # Users
   users.users.user = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
   };
-
-  # Packagess
-  environment.systemPackages = with pkgs; [
-    git
-    nil
-    nixpkgs-fmt
-
-    neofetch
-    vscodium
-    librewolf
-  ];
 
   # https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion
   system.stateVersion = "23.11";
