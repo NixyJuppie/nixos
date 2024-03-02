@@ -10,6 +10,7 @@
       lookAndFeel = "org.kde.breezedark.desktop";
       iconTheme = "breeze-dark";
     };
+    windows.allowWindowsToRememberPositions = true;
     shortcuts = {
       kwin.Overview = "Meta+Tab";
 
@@ -29,14 +30,8 @@
       };
 
       kdeglobals = {
-        General = {
-          fixed = "JetBrains Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
-          AllowKDEAppsToRememberWindowPositions = true;
-        };
-        KDE = {
-          AnimationDurationFactor = 0.35;
-          SingleClick = false;
-        };
+        General.fixed = "JetBrains Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
+        KDE.AnimationDurationFactor = 0.35;
       };
 
       kscreenlockerrc.Daemon = {
