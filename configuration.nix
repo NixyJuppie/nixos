@@ -1,13 +1,26 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   imports = [ ./hardware-configuration.nix ];
+
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "steam"
+    "steam-original"
+    "steam-run"
+  ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
+  # Xbox One Wireless Controller 
+  hardware.xpadneo.enable = true;
 
   # Networking
   networking.hostName = "nixos";
@@ -44,6 +57,9 @@
 
   # Shells
   programs.fish.enable = true;
+
+  # Steam
+  programs.steam.enable = true;
 
   # Users
   users.users.user = {
