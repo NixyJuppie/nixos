@@ -69,10 +69,10 @@
 
     };
 
-    startup.autoStartScript.beeper.text = "${pkgs.beeper}/bin/beeper --hidden";
-    startup.autoStartScript.proton-vpn.text = "${pkgs.protonvpn-gui}/bin/protonvpn-app";
+    startup.autoStartScript.beeper.text = "sh -c '${pkgs.beeper}/bin/beeper --hidden' &";
+    startup.autoStartScript.protonvpn.text = "sh -c '${pkgs.protonvpn-gui}/bin/protonvpn-app' &";
     # Currently doesn't work, need env GDK_BACKEND=x11. PR: https://github.com/NixOS/nixpkgs/pull/292809
-    startup.autoStartScript.spotify-tray.text = "${pkgs.spotify-tray}/bin/spotify-tray";
+    startup.autoStartScript.spotify-tray.text = "sh -c 'GDK_BACKEND=x11 ${pkgs.spotify-tray}/bin/spotify-tray -m' &";
   };
 
   home.file.".local/share/konsole/User.profile".text = lib.concatStringsSep "\n" [
