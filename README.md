@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # NixOS Config
 
 > [!WARNING]  
@@ -29,3 +30,17 @@ nixos-enter -c "passwd user"
 
 ## Home Manager
 Home Manager configuration and guide lives in separate [git repository](https://github.com/NixyJuppie/home-manager).
+=======
+# Home Manager Config
+
+## Installation
+> [!WARNING]  
+> These commands must be executed by an user named `user`.
+
+```bash
+# Clone this repo
+git clone https://github.com/NixyJuppie/home-manager ~/.config/home-manager
+# Build config
+nix run home-manager/master -- switch
+```
+>>>>>>> home-manager/develop
