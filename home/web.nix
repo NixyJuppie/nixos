@@ -1,5 +1,26 @@
 { pkgs, ... }:
 {
+  home.packages = with pkgs; [ protonvpn-gui ];
+
+  home.file.".config/Proton/VPN/settings.json".text = ''
+    {
+      "protocol": "openvpn-udp",
+      "killswitch": 1,
+      "dns_custom_ips": [],
+      "features": {
+          "netshield": 2,
+          "moderate_nat": false,
+          "vpn_accelerator": true,
+          "port_forwarding": false
+      }
+    }⏎'';
+
+  home.file.".config/Proton/VPN/app-config.json".text = ''
+    {
+      "tray_pinned_servers": [ "PL", "CH", "NL", "IT", "UK", "US" ],
+      "connect_at_app_startup": "FASTEST"
+    }'';
+
   programs.firefox = {
     enable = true;
     profiles.default = {

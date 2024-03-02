@@ -5,11 +5,12 @@
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
       "beeper"
+      "spotify"
     ];
 
   home.username = "user";
   home.homeDirectory = "/home/user";
-  home.packages = with pkgs; [ neofetch beeper ];
+  home.packages = with pkgs; [ neofetch beeper spotify spotify-tray ];
 
   programs.fish = {
     enable = true;

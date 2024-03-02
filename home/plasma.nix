@@ -70,6 +70,9 @@
     };
 
     startup.autoStartScript.beeper.text = "${pkgs.beeper}/bin/beeper --hidden";
+    startup.autoStartScript.proton-vpn.text = "${pkgs.protonvpn-gui}/bin/protonvpn-app";
+    # Currently doesn't work, need env GDK_BACKEND=x11. PR: https://github.com/NixOS/nixpkgs/pull/292809
+    startup.autoStartScript.spotify-tray.text = "${pkgs.spotify-tray}/bin/spotify-tray";
   };
 
   home.file.".local/share/konsole/User.profile".text = lib.concatStringsSep "\n" [
@@ -153,7 +156,7 @@
     "ColorRandomization=false"
     "Description=Breeze"
     "FillStyle=Tile"
-    "Opacity=0.75"
+    "Opacity=0.85"
     "Wallpaper="
     "WallpaperFlipType=NoFlip"
     "WallpaperOpacity=1"
