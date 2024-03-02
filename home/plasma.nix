@@ -11,6 +11,8 @@
       iconTheme = "breeze-dark";
     };
     shortcuts = {
+      kwin.Overview = "Meta+Tab";
+
       mediacontrol.nextmedia = [ "Media Next" "Shift+Volume Up" ];
       mediacontrol.previousmedia = [ "Media Previous" "Shift+Volume Down" ];
       kmix.mic_mute = [ "Microphone Mute" "Shift+Volume Mute" ];
@@ -25,13 +27,35 @@
         Use = true;
         LayoutList = "pl";
       };
-      kdeglobals.General.fixed = "JetBrains Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
+
+      kdeglobals = {
+        General = {
+          fixed = "JetBrains Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
+          AllowKDEAppsToRememberWindowPositions = true;
+        };
+        KDE = {
+          AnimationDurationFactor = 0.35;
+          SingleClick = false;
+        };
+      };
+
+      kscreenlockerrc.Daemon = {
+        Autolock = false;
+        LockOnResume = true;
+      };
+
+      ksmserverrc.General.loginMode = "emptySession";
 
       # Screen Edges layout (9 - disabled):
       # 7 - 8 - 1
       # 6 -   - 2
       # 5 - 4 - 3
       kwinrc.Effect-overview.BorderActivate = 9;
+      kwinrc.Plugins.wobblywindowsEnabled = true;
+      kwinrc.ModifierOnlyShortcuts.Meta = "org.kde.krunner,/App,,toggleDisplay";
+
+      krunnerrc.General.ActivateWhenTypingOnDesktop = false;
+      krunnerrc.General.FreeFloating = true;
 
       konsolerc."Desktop Entry".DefaultProfile = "User.profile";
 
