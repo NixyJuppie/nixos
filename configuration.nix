@@ -39,6 +39,7 @@
   # Packagess
   environment.systemPackages = with pkgs; [
     git
+    gamemode
   ];
 
   # Shells
