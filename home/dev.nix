@@ -38,6 +38,7 @@
       mkhl.direnv
       jnoortheen.nix-ide
       rust-lang.rust-analyzer
+      bungcip.better-toml
 
       usernamehw.errorlens
       zhuangtongfa.material-theme
