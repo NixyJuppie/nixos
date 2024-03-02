@@ -1,11 +1,16 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    # nix
     nil
     nixpkgs-fmt
 
+    # git
     gnupg
     git-credential-manager
+    github-desktop
+
+    jetbrains-mono
   ];
 
   programs.git = {
@@ -29,12 +34,27 @@
     mutableExtensionsDir = false;
     extensions = with pkgs.vscode-extensions; [
       jnoortheen.nix-ide
+      rust-lang.rust-analyzer
+
       usernamehw.errorlens
+      zhuangtongfa.material-theme
+      pkief.material-icon-theme
     ];
     userSettings = {
-      "editor.fontSize" = 18;
-      "editor.minimap.enabled" = false;
       "editor.formatOnSave" = true;
+      "editor.minimap.enabled" = false;
+      "editor.fontSize" = 18;
+      "editor.fontLigatures" = true;
+      "editor.fontFamily" = "'JetBrains Mono', 'monospace', monospace";
+      "terminal.integrated.fontFamily" = "'JetBrains Mono', 'monospace', monospace";
+      "terminal.integrated.defaultProfile.linux" = "fish";
+
+      "workbench.colorTheme" = "One Dark Pro Darker";
+      "workbench.iconTheme" = "material-icon-theme";
+
+      "git.autofetch" = true;
+      "git.enableSmartCommit" = true;
+
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";
       "nix.serverSettings" = {

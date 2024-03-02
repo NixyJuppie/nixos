@@ -36,13 +36,13 @@
         "type": "github"
       }
     },
-    "nur": {
+    "nurpkgs": {
       "locked": {
-        "lastModified": 1709326940,
-        "narHash": "sha256-88BiXn9PJ5y+BGggqQvn7YvluHzBh2I9ZJglmI/JaS8=",
+        "lastModified": 1709344419,
+        "narHash": "sha256-L+eUbeajoQRQovsU8jj8ytMZcnF2+bDN3NMHrn5eMl8=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "6575c91c724aa12426c49a70bca63a94462f4efd",
+        "rev": "b5b87b2880e3091ad286fddd4464caab2e4558f8",
         "type": "github"
       },
       "original": {
@@ -78,7 +78,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "nur": "nur",
+        "nurpkgs": "nurpkgs",
         "plasma-manager": "plasma-manager"
       }
     }

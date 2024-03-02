@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 {
   programs.firefox = {
     enable = true;
@@ -11,6 +10,7 @@
         ublock-origin
         proton-pass
         libredirect
+        plasma-integration
       ];
       bookmarks = [
         {
@@ -18,8 +18,16 @@
           toolbar = true;
           bookmarks = [
             {
+              name = "Mail";
+              url = "https://mail.proton.me/u/0/inbox";
+            }
+            {
+              name = "GitHub";
+              url = "https://github.com";
+            }
+            {
               name = "RSS";
-              url = "http://192.168.0.200:";
+              url = "http://192.168.0.200:1000";
             }
           ];
         }

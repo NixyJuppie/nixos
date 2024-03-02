@@ -1,9 +1,5 @@
-{ pkgs, lib, ... }:
+{ lib, ... }:
 {
-  home.packages = with pkgs; [
-    gamemode
-  ];
-
   programs.mangohud = {
     enable = true;
     enableSessionWide = true;

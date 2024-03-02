@@ -1,8 +1,7 @@
-{ pkgs, nur, lib, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [ ./desktop.nix ./web.nix ./dev.nix ./gaming.nix ];
 
-  nixpkgs.overlays = [ nur.overlay ];
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
       "beeper"
