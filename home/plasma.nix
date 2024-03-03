@@ -14,6 +14,7 @@
 
     workspace = {
       clickItemTo = "select";
+      wallpaper = "${./desktop.png}";
       theme = "breeze-dark";
       colorScheme = "BreezeDark";
       cursorTheme = "Breeze";
