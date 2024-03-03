@@ -24,6 +24,7 @@
   # Virtualisation
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
+  environment.systemPackages = with pkgs; [ virtiofsd ];
 
   # Networking
   networking.hostName = settings.hostname;
@@ -57,12 +58,6 @@
   # Gaming
   programs.steam.enable = true;
   programs.gamemode.enable = true;
-
-  # Packagess
-  environment.systemPackages = with pkgs; [
-    git
-    virtiofsd
-  ];
 
   # Shells
   programs.fish.enable = true;
