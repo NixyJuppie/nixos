@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, settings, ... }:
 {
   imports = [ ./plasma.nix ./web.nix ./dev.nix ./gaming.nix ];
 
@@ -8,8 +8,8 @@
       "spotify"
     ];
 
-  home.username = "user";
-  home.homeDirectory = "/home/user";
+  home.username = settings.username;
+  home.homeDirectory = "/home/${settings.username}";
   home.packages = with pkgs; [ neofetch beeper spotify spotify-tray ];
 
   programs.fish = {

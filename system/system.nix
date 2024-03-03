@@ -1,7 +1,7 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, settings, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ ./hardware.nix ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "steam"
@@ -23,7 +23,7 @@
   hardware.xpadneo.enable = true;
 
   # Networking
-  networking.hostName = "nixos";
+  networking.hostName = settings.hostname;
   networking.networkmanager.enable = true;
 
   # Locale
@@ -33,6 +33,10 @@
     font = "Lat2-Terminus16";
     keyMap = "pl";
   };
+
+  # Virtualisation
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
 
   # Desktop
   services.xserver.enable = true;
@@ -53,6 +57,7 @@
   environment.systemPackages = with pkgs; [
     git
     gamemode
+    virtiofsd
   ];
 
   # Shells
@@ -62,7 +67,7 @@
   programs.steam.enable = true;
 
   # Users
-  users.users.user = {
+  users.users.${settings.username} = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     shell = pkgs.fish;

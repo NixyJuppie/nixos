@@ -53,7 +53,29 @@
           ];
         }
       ];
+      search = {
+        engines = {
+          "Brave" = {
+            urls = [{ template = "https://search.brave.com/search?q={searchTerms}"; }];
+            iconUpdateURL = "https://brave.com/static-assets/images/brave-logo-sans-text.svg";
+            updateInterval = 24 * 60 * 60 * 1000;
+            definedAliases = [ "b" ];
+          };
+          # Name must be different from the builtin one
+          "Google (cringe)" = {
+            urls = [{ template = "https://www.google.com/search?q={searchTerms}"; }];
+            iconUpdateURL = "https://www.google.com/favicon.ico";
+            updateInterval = 24 * 60 * 60 * 1000;
+            definedAliases = [ "g" ];
+          };
+        };
+        order = [ "Brave" "Google (cringe)" ];
+        default = "Brave";
+        privateDefault = "Brave";
+        force = true;
+      };
       settings = {
+        "browser.toolbars.bookmarks.visibility" = "always";
         "extensions.pocket.enabled" = false;
         "signon.rememberSignons" = false;
       };

@@ -1,5 +1,5 @@
 {
-  description = "NixyJuppie NixOS Configuration";
+  description = "Personal NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -18,29 +18,30 @@
 
   outputs = inputs @ { nixpkgs, nurpkgs, disko, home-manager, plasma-manager, ... }:
     let
-      system = "x86_64-linux";
+      settings = import ./settings.nix;
+      apply-overlays = ({ nixpkgs.overlays = [ nurpkgs.overlay ]; });
+      special-args = { inherit inputs settings; };
     in
     {
       nixosConfigurations = {
-        nixos = inputs.nixpkgs.lib.nixosSystem {
-          inherit system;
+        ${settings.hostname} = nixpkgs.lib.nixosSystem {
+          system = settings.system;
+          specialArgs = special-args;
           modules = [
-            disko.nixosModules.disko
-            ./disko.nix
-            ./configuration.nix
-          ];
-        };
-      };
+            apply-overlays
 
-      homeConfigurations = {
-        user = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
-          modules = [
-            plasma-manager.homeManagerModules.plasma-manager
-            ./home/home.nix
-            ({ pkgs, ... }: {
-              nixpkgs.overlays = [ nurpkgs.overlay ];
-            })
+            disko.nixosModules.disko
+            ./system/disko.nix
+            ./system/system.nix
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.extraSpecialArgs = special-args;
+              home-manager.users.${settings.username}.imports = [
+                apply-overlays
+                ./home/home.nix
+              ];
+            }
           ];
         };
       };
