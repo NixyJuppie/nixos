@@ -13,7 +13,7 @@
           "vpn_accelerator": true,
           "port_forwarding": false
       }
-    }⏎'';
+    }'';
 
   home.file.".config/Proton/VPN/app-config.json".text = ''
     {
