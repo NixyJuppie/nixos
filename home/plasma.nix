@@ -4,6 +4,14 @@
 
   programs.plasma = {
     enable = true;
+
+    windows.allowWindowsToRememberPositions = true;
+
+    kwin.titlebarButtons = {
+      left = [ "more-window-actions" "keep-above-windows" ];
+      right = [ "minimize" "maximize" "close" ];
+    };
+
     workspace = {
       clickItemTo = "select";
       theme = "breeze-dark";
@@ -12,7 +20,7 @@
       lookAndFeel = "org.kde.breezedark.desktop";
       iconTheme = "breeze-dark";
     };
-    windows.allowWindowsToRememberPositions = true;
+
     shortcuts = {
       kwin.Overview = "Meta+Tab";
 
@@ -24,6 +32,7 @@
       "services.org.kde.spectacle.desktop".RectangularRegionScreenShot = [ "Meta+Shift+Print" "Meta+Shift+S" ];
       "services.org.kde.plasma-systemmonitor.desktop"._launch = "Ctrl+Shift+Esc";
     };
+
     configFile = {
       # Keyboard
       kxkbrc.Layout = {
@@ -73,10 +82,10 @@
 
     startup.autoStartScript.beeper.text = "sh -c '${pkgs.beeper}/bin/beeper --hidden' &";
     startup.autoStartScript.protonvpn.text = "sh -c '${pkgs.protonvpn-gui}/bin/protonvpn-app' &";
-    # Currently doesn't work, need env GDK_BACKEND=x11. PR: https://github.com/NixOS/nixpkgs/pull/292809
     startup.autoStartScript.spotify-tray.text = "sh -c 'GDK_BACKEND=x11 ${pkgs.spotify-tray}/bin/spotify-tray -m' &";
   };
 
+  # https://github.com/pjones/plasma-manager/pull/69
   home.file.".local/share/konsole/User.profile".text = lib.concatStringsSep "\n" [
     "[Appearance]"
     "ColorScheme=Breeze"
