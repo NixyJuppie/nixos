@@ -19,7 +19,16 @@
   outputs = inputs @ { nixpkgs, nurpkgs, disko, home-manager, plasma-manager, ... }:
     let
       settings = import ./settings.nix;
-      apply-overlays = ({ nixpkgs.overlays = [ nurpkgs.overlay ]; });
+      apply-overlays = ({
+        nixpkgs.overlays = [ nurpkgs.overlay ];
+        nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [
+          "steam"
+          "steam-original"
+          "steam-run"
+          "beeper"
+          "spotify"
+        ];
+      });
       special-args = { inherit inputs settings; };
     in
     {

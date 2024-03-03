@@ -1,12 +1,6 @@
-{ lib, pkgs, settings, ... }:
+{ pkgs, settings, ... }:
 {
   imports = [ ./plasma.nix ./web.nix ./dev.nix ./gaming.nix ];
-
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "beeper"
-      "spotify"
-    ];
 
   home.username = settings.username;
   home.homeDirectory = "/home/${settings.username}";

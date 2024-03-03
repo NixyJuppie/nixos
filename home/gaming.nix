@@ -1,5 +1,7 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
 {
+  home.packages = with pkgs; [ protontricks ];
+
   programs.mangohud = {
     enable = true;
     enableSessionWide = true;

@@ -1,15 +1,11 @@
-{ lib, pkgs, settings, ... }:
+{ pkgs, settings, ... }:
 
 {
   imports = [ ./hardware.nix ];
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "steam"
-    "steam-original"
-    "steam-run"
-  ];
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  environment.systemPackages = with pkgs; [ virtiofsd ntfs3g ];
 
   # Core
   programs.git.enable = true;
@@ -24,7 +20,6 @@
   # Virtualisation
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
-  environment.systemPackages = with pkgs; [ virtiofsd ];
 
   # Networking
   networking.hostName = settings.hostname;
