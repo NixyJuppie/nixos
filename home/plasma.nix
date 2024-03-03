@@ -27,6 +27,8 @@
 
       mediacontrol.nextmedia = [ "Media Next" "Shift+Volume Up" ];
       mediacontrol.previousmedia = [ "Media Previous" "Shift+Volume Down" ];
+      mediacontrol.mediavolumedown = "Ctrl+Volume Down";
+      mediacontrol.mediavolumeup = "Ctrl+Volume Up";
       kmix.mic_mute = [ "Microphone Mute" "Shift+Volume Mute" ];
 
       "services.org.kde.spectacle.desktop"._launch = "Print";
