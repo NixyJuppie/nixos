@@ -4,7 +4,7 @@
 
   home.username = settings.username;
   home.homeDirectory = "/home/${settings.username}";
-  home.packages = with pkgs; [ neofetch beeper spotify spotify-tray ];
+  home.packages = with pkgs; [ neofetch beeper spotify spotify-tray unrar ];
 
   programs.fish = {
     enable = true;

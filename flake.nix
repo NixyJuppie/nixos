@@ -27,6 +27,7 @@
           "steam-run"
           "beeper"
           "spotify"
+          "unrar"
         ];
       });
       special-args = { inherit inputs settings; };

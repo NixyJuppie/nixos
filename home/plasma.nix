@@ -44,8 +44,11 @@
       };
 
       kdeglobals = {
-        General.fixed = "JetBrains Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
         KDE.AnimationDurationFactor = 0.35;
+        General = {
+          AccentColor = "180,110,228";
+          fixed = "JetBrains Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
+        };
       };
 
       kscreenlockerrc.Daemon = {
