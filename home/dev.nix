@@ -1,8 +1,6 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    jetbrains-toolbox
-
     # nix
     nil
     nixpkgs-fmt
@@ -73,6 +71,12 @@
           };
         };
       };
+
+      "rust-analyzer.references.excludeTests" = true;
+      "rust-analyzer.lens.references.adt.enable" = true;
+      "rust-analyzer.lens.references.trait.enable" = true;
+      "rust-analyzer.lens.references.method.enable" = true;
+      "rust-analyzer.lens.references.enumVariant.enable" = true;
     };
   };
 }
