@@ -1,6 +1,18 @@
-{ lib, pkgs, inputs, ... }:
+{ lib, pkgs, inputs, settings, ... }:
 {
   imports = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
+
+  services.flameshot = {
+    enable = true;
+    settings = {
+      General = {
+        disabledTrayIcon = true;
+        saveAfterCopy = true;
+        savePath = "/home/${settings.username}/Pictures/Screenshots";
+        filenamePattern = "Screenshot_%F_%H-%M-%S";
+      };
+    };
+  };
 
   programs.plasma = {
     enable = true;
@@ -31,8 +43,7 @@
       mediacontrol.mediavolumeup = "Ctrl+Volume Up";
       kmix.mic_mute = [ "Microphone Mute" "Shift+Volume Mute" ];
 
-      "services.org.kde.spectacle.desktop"._launch = "Print";
-      "services.org.kde.spectacle.desktop".RectangularRegionScreenShot = [ "Meta+Shift+Print" "Meta+Shift+S" ];
+      "services.org.flameshot.Flameshot.desktop"."Capture" = "Meta+Shift+S";
       "services.org.kde.plasma-systemmonitor.desktop"._launch = "Ctrl+Shift+Esc";
     };
 
@@ -70,20 +81,6 @@
       krunnerrc.General.FreeFloating = true;
 
       konsolerc."Desktop Entry".DefaultProfile = "User.profile";
-
-      spectaclerc = {
-        General = {
-          autoSaveImage = false;
-          clipboardGroup = "PostScreenshotCopyImage";
-          rememberSelectionRect = "Never";
-        };
-        ImageSave = {
-          imageCompressionQuality = 100;
-          imageFilenameTemplate = "Screenshot_<yyyy>-<MM>-<dd>_<hh>-<mm>-<ss>";
-          translatedScreenshotsFolder = "Screenshots";
-        };
-      };
-
     };
 
     startup.autoStartScript.beeper.text = "sh -c '${pkgs.beeper}/bin/beeper --hidden' &";

@@ -29,8 +29,8 @@
 
   # Desktop
   services.xserver.enable = true;
+  services.desktopManager.plasma6.enable = true;
   services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma6.enable = true;
 
   # Audio
   security.rtkit.enable = true;
