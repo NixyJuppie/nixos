@@ -22,6 +22,7 @@
       apply-overlays = ({
         nixpkgs.overlays = [ nurpkgs.overlay ];
         nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [
+          "jetbrains-toolbox"
           "steam"
           "steam-original"
           "steam-run"

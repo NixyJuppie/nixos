@@ -1,6 +1,8 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    jetbrains-toolbox
+
     # nix
     nil
     nixpkgs-fmt
