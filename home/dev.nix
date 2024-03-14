@@ -10,6 +10,7 @@
     git-credential-manager
     github-desktop
 
+    # font
     jetbrains-mono
   ];
 
@@ -39,6 +40,7 @@
       jnoortheen.nix-ide
       rust-lang.rust-analyzer
       bungcip.better-toml
+      redhat.vscode-yaml
 
       usernamehw.errorlens
       zhuangtongfa.material-theme
