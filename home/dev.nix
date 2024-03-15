@@ -39,6 +39,7 @@
       mkhl.direnv
       jnoortheen.nix-ide
       rust-lang.rust-analyzer
+      serayuzgur.crates
       bungcip.better-toml
       redhat.vscode-yaml
 
@@ -77,6 +78,8 @@
       "rust-analyzer.lens.references.trait.enable" = true;
       "rust-analyzer.lens.references.method.enable" = true;
       "rust-analyzer.lens.references.enumVariant.enable" = true;
+
+      "redhat.telemetry.enabled" = false;
     };
   };
 }
