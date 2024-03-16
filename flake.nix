@@ -14,13 +14,15 @@
     plasma-manager.url = "github:pjones/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
+
+    vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
-  outputs = inputs @ { nixpkgs, nurpkgs, disko, home-manager, plasma-manager, ... }:
+  outputs = inputs @ { nixpkgs, nurpkgs, disko, home-manager, plasma-manager, vscode-extensions, ... }:
     let
       settings = import ./settings.nix;
       apply-overlays = ({
-        nixpkgs.overlays = [ nurpkgs.overlay ];
+        nixpkgs.overlays = [ nurpkgs.overlay vscode-extensions.overlays.default ];
         nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [
           "steam"
           "steam-original"

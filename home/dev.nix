@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   home.packages = with pkgs; [
     # nix
@@ -12,6 +12,16 @@
 
     # font
     jetbrains-mono
+
+    # mold linker
+    mold
+    clang
+  ];
+
+  home.file.".cargo/config.toml".text = lib.concatStringsSep "\n" [
+    "[target.x86_64-unknown-linux-gnu]"
+    "linker = 'clang'"
+    "rustflags = ['-C', 'link-arg=-fuse-ld=${pkgs.mold}/bin/mold']"
   ];
 
   programs.git = {
@@ -35,10 +45,11 @@
     enable = true;
     package = pkgs.vscodium;
     mutableExtensionsDir = false;
-    extensions = with pkgs.vscode-extensions; [
+    extensions = with pkgs.open-vsx; [
       mkhl.direnv
       jnoortheen.nix-ide
       rust-lang.rust-analyzer
+      belfz.search-crates-io
       serayuzgur.crates
       bungcip.better-toml
       redhat.vscode-yaml
@@ -46,6 +57,18 @@
       usernamehw.errorlens
       zhuangtongfa.material-theme
       pkief.material-icon-theme
+    ];
+    keybindings = [
+      {
+        "key" = "alt+enter";
+        "command" = "editor.action.quickFix";
+        "when" = "editorHasCodeActionsProvider && textInputFocus && !editorReadonly";
+      }
+      {
+        "key" = "ctrl+.";
+        "command" = "-editor.action.quickFix";
+        "when" = "editorHasCodeActionsProvider && textInputFocus && !editorReadonly";
+      }
     ];
     userSettings = {
       "editor.formatOnSave" = true;
