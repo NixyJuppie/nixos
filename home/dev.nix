@@ -85,6 +85,8 @@
       "git.autofetch" = true;
       "git.enableSmartCommit" = true;
       "git.confirmSync" = false;
+      "git.terminalAuthentication" = false;
+      "github.gitAuthentication" = false;
 
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";
