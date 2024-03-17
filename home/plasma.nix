@@ -36,6 +36,7 @@
 
     shortcuts = {
       kwin.Overview = "Meta+Tab";
+      kwin."Window Fullscreen" = "Meta+Shift+Return";
 
       mediacontrol.nextmedia = [ "Media Next" "Shift+Volume Up" ];
       mediacontrol.previousmedia = [ "Media Previous" "Shift+Volume Down" ];
