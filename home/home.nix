@@ -13,6 +13,8 @@
   programs.starship.enable = true;
   programs.nix-index.enable = true;
 
+  programs.obs-studio.enable = true;
+
   programs.home-manager.enable = true;
   home.stateVersion = "23.11";
 }
