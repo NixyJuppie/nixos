@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 {
-  home.packages = with pkgs; [ protontricks ];
+  home.packages = with pkgs; [ protontricks protonup-qt ];
 
   programs.mangohud = {
     enable = true;
