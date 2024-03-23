@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [ protonvpn-gui ];
+  home.packages = with pkgs; [ protonvpn-gui ungoogled-chromium ];
 
   home.file.".config/Proton/VPN/settings.json".text = ''
     {
@@ -49,6 +49,10 @@
             {
               name = "RSS";
               url = "http://192.168.0.200:1000";
+            }
+            {
+              name = "Nemesis Backlog";
+              url = "https://github.com/users/NixyJuppie/projects/7";
             }
           ];
         }
