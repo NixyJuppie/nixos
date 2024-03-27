@@ -88,7 +88,7 @@
 
     startup.autoStartScript.beeper.text = "sh -c '${pkgs.beeper}/bin/beeper --hidden' &";
     startup.autoStartScript.protonvpn.text = "sh -c '${pkgs.protonvpn-gui}/bin/protonvpn-app' &";
-    startup.autoStartScript.spotify-tray.text = "sh -c 'GDK_BACKEND=x11 ${pkgs.spotify-tray}/bin/spotify-tray -m' &";
+    startup.autoStartScript.spotify.text = "sh -c '${pkgs.spotify}/bin/spotify --minimized' &";
   };
 
   # https://github.com/pjones/plasma-manager/pull/69
