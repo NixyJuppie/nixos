@@ -53,6 +53,7 @@
       serayuzgur.crates
       bungcip.better-toml
       redhat.vscode-yaml
+      eamodio.gitlens
 
       usernamehw.errorlens
       zhuangtongfa.material-theme
